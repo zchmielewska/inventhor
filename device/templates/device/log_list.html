@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Log </h1>
+    <div class="brick">
+        <ul>
+            {% for log in logs %}
+            <li>
+                {{ log.timestamp|date:'Y-m-d H:i' }} -
+                {{ log.device }}
+                {% if log.action == 1 %}
+                    added to
+                {% elif log.action == 2 %}
+                    removed from
+                {% endif %}
+                {{ log.employee }} (by {{ log.user.username }})
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -24,9 +24,27 @@
             </ul>
         </p>
 
-
         <a href="{% url 'update_employee' employee.id %}" class="button gray-button">Edit</a>
         <a href="{% url 'delete_employee' employee.id %}" class="button red-button">Delete</a>
+
+        <h2>Logs</h2>
+        {% if logs %}
+            <ul>
+                {% for log in logs %}
+                <li>
+                    {{ log.timestamp|date:'Y-m-d H:i' }} -
+                    {% if log.action == 1 %}
+                        added
+                    {% elif log.action == 2 %}
+                        removed
+                    {% endif %}
+                    {{ log.device }} (by {{ log.user.username }})
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            ---
+        {% endif %}
     </div>
 
 {% endblock %}

@@ -259,3 +259,13 @@ form > ul.errorlist {
   color: #C69749;
   cursor: pointer;
 }
+
+/* wrapper and push are used to make footer sticky */
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -48px;
+}
+
+footer, .push {
+  height: 48px;
+}

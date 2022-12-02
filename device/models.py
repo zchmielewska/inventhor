@@ -1,9 +1,9 @@
+from django.conf import settings
 from django.db import models
 
-
 ACTION = (
-    (1, "add"),
-    (2, "remove"),
+    (1, "ADD"),
+    (2, "REMOVE"),
 )
 
 
@@ -40,7 +40,12 @@ class Device(models.Model):
         ordering = ["local_id"]
 
 
-class History(models.Model):
+class Log(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     device = models.ForeignKey(Device, on_delete=models.CASCADE)
     action = models.IntegerField(choices=ACTION)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-timestamp"]

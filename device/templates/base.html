@@ -15,18 +15,21 @@
                 <li><a href="/">inven<span style="font-weight: bold;">thor</span></a></li>
                 <li><a href='{% url "main" %}'>Devices</li></li>
                 <li><a href='{% url "employee_list" %}'>Employees</a></li>
+                <li><a href='{% url "log_list" %}'>Log</a></li>
             </ul>
         </nav>
     </div>
 
-    <div class="midbar">
-        <div class="login">
-            {{ request.user.username }} |
-            {% if request.user.is_authenticated %}
-                <a href="{% url "logout" %}">log out</a>
-            {% endif %}
+    {% if request.user.is_authenticated %}
+        <div class="midbar">
+            <div class="login">
+                {{ request.user.username }} |
+                {% if request.user.is_authenticated %}
+                    <a href="{% url "logout" %}">log out</a>
+                {% endif %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
     <main>
         {% if messages %}

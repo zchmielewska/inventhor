@@ -15,3 +15,8 @@ class TypeAdmin(admin.ModelAdmin):
 @admin.register(models.Device)
 class DeviceAdmin(admin.ModelAdmin):
     list_display = ("id", "local_id", "type", "model")
+
+
+@admin.register(models.Log)
+class HistoryAdmin(admin.ModelAdmin):
+    list_display = ("id", "employee", "device", "action", "user", "timestamp")
