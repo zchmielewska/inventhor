@@ -1,6 +1,12 @@
 from django.db import models
 
 
+ACTION = (
+    (1, "add"),
+    (2, "remove"),
+)
+
+
 class Employee(models.Model):
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
@@ -32,3 +38,9 @@ class Device(models.Model):
 
     class Meta:
         ordering = ["local_id"]
+
+
+class History(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE)
+    action = models.IntegerField(choices=ACTION)

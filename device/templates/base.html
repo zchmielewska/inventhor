@@ -19,6 +19,15 @@
         </nav>
     </div>
 
+    <div class="midbar">
+        <div class="login">
+            {{ request.user.username }} |
+            {% if request.user.is_authenticated %}
+                <a href="{% url "logout" %}">log out</a>
+            {% endif %}
+        </div>
+    </div>
+
     <main>
         {% if messages %}
             {% for message in messages %}

@@ -25,12 +25,20 @@
 
         <p>
             <span class="label">Employee</span><br>
-            <span><a href="{% url 'employee_detail' device.employee.id %}" class="link">{{ device.employee }}</a></span>
+            {% if device.employee %}
+                <span><a href="{% url 'employee_detail' device.employee.id %}" class="link">{{ device.employee }}</a></span>
+            {% else %}
+                ---
+            {% endif %}
         </p>
 
         <p>
             <span class="label">Comment</span><br>
-            <span>{{ device.comment|linebreaks }}</span>
+            {% if device.comment %}
+                <span>{{ device.comment|linebreaks }}</span>
+            {% else %}
+                ---
+            {% endif %}
         </p>
 
         <a href="{% url 'update_device' device.id %}" class="button gray-button">Edit</a>

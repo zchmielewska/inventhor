@@ -23,7 +23,13 @@
             <td>{{ device.type }}</td>
             <td>{{ device.model}}</td>
             <td>{{ device.usable}}</td>
-            <td>{{ device.employee}}</td>
+            <td>
+                {% if device.employee %}
+                    <span>{{ device.employee }}</span>
+                {% else %}
+                   ---
+                {% endif %}
+            </td>
         </tr>
         {% endfor %}
     </table>

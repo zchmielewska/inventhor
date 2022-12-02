@@ -19,7 +19,11 @@ body {
     background-color: #000000;
 }
 
-nav, main {
+.midbar {
+    background-color: #282A3A;
+}
+
+nav, main, .login {
     width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -51,8 +55,14 @@ nav > ul > li:last-child {
     margin-right: 0;
 }
 
-nav a:hover {
+nav a:hover, .login a:hover {
     color: #C69749;
+}
+
+.login {
+    font-size: 0.8em;
+    padding: 0.4em 0 0.4em 0.8em;
+    color: #fff;
 }
 
 .brick {
