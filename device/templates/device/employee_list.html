@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="vertical-center">
+        <a href='{% url "add_employee" %}' class="button green-button big-button">Add new employee</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Number of devices</th>
+        </tr>
+
+        {% for employee in employees %}
+        <tr style='cursor: pointer;' onclick="window.location='{% url "employee_detail" employee.id %}';">
+            <td>{{ forloop.counter }}</td>
+            <td>{{ employee.first_name}}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.device_set.count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

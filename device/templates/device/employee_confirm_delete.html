@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Delete employee</h1>
+    <div class="brick">
+        <form method="post">{% csrf_token %}
+            <p>Are you sure you want to delete "{{ object }}"?</p>
+            {{ form }}
+            <button type="submit" class="button red-button">Delete employee</button>
+        </form>
+    </div>
+
+{% endblock %}

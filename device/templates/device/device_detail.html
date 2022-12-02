@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>{{ device }}</h1>
+    <div class="brick">
+        <p>
+            <span class="label">Local ID</span><br>
+            <span>{{ device.local_id }}</span>
+        </p>
+
+        <p>
+            <span class="label">Type</span><br>
+            <span>{{ device.type }}</span>
+        </p>
+
+        <p>
+            <span class="label">Model</span><br>
+            <span>{{ device.model }}</span>
+        </p>
+
+        <p>
+            <span class="label">Usable</span><br>
+            <span>{{ device.usable }}</span>
+        </p>
+
+        <p>
+            <span class="label">Employee</span><br>
+            <span><a href="{% url 'employee_detail' device.employee.id %}" class="link">{{ device.employee }}</a></span>
+        </p>
+
+        <p>
+            <span class="label">Comment</span><br>
+            <span>{{ device.comment|linebreaks }}</span>
+        </p>
+
+        <a href="{% url 'update_device' device.id %}" class="button gray-button">Edit</a>
+        <a href="{% url 'delete_device' device.id %}" class="button red-button">Delete</a>
+    </div>
+
+{% endblock %}

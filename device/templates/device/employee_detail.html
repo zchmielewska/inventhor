@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>{{ employee.type }} ({{ employee.local_id }})</h1>
+    <div class="brick">
+        <p>
+            <span class="label">First name</span><br>
+            <span>{{ employee.first_name }}</span>
+        </p>
+
+        <p>
+            <span class="label">Last name</span><br>
+            <span>{{ employee.last_name }}</span>
+        </p>
+
+        <p>
+            <span class="label">Devices</span><br>
+            <ul>
+            {% for device in employee.device_set.all %}
+                <li><a href="{% url 'device_detail' device.id %}" class="link">{{ device }}</a></li>
+            {% endfor %}
+            </ul>
+        </p>
+
+
+        <a href="{% url 'update_employee' employee.id %}" class="button gray-button">Edit</a>
+        <a href="{% url 'delete_employee' employee.id %}" class="button red-button">Delete</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="vertical-center">
+        <a href='{% url "add_device" %}' class="button green-button big-button">Add new device</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Local ID</th>
+            <th>Type</th>
+            <th>Model</th>
+            <th>Usable</th>
+            <th>Employee</th>
+        </tr>
+
+        {% for device in devices %}
+        <tr style='cursor: pointer;' onclick="window.location='{% url "device_detail" device.id %}';">
+            <td>{{ forloop.counter }}</td>
+            <td>{{ device.local_id}}</td>
+            <td>{{ device.type }}</td>
+            <td>{{ device.model}}</td>
+            <td>{{ device.usable}}</td>
+            <td>{{ device.employee}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
